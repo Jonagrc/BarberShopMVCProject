@@ -1,0 +1,49 @@
+﻿@model BarberShop.Models.Appointment
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    <form asp-action="Update" asp-controller="Home" method="post">
+        <div>
+            @*using this to gather information then once done going toaction create() and posting*@
+            <label asp-for="Barber"></label>
+            <select asp-for="Barber"
+                    asp-items="Html.GetEnumSelectList<BarberShop.Models.Barber>()">
+                <option value="">Please Select</option>
+            </select>
+        </div>
+        <div>
+            @*using this to gather information then once done going toaction create() and posting*@
+            <label asp-for="AppointmentDateTime"></label>
+            <input asp-for="AppointmentDateTime" />
+        </div>
+        <div>
+            @*using this to gather information then once done going toaction create() and posting*@
+            <label asp-for="ServiceRequested"></label>
+            <select asp-for="ServiceRequested"
+                    asp-items="Html.GetEnumSelectList<BarberShop.Models.Service>()">
+                <option value="">Please Select</option>
+            </select>
+            @*we a mentioning that the select tag is for department(label) and its getting the values from models => dept*@
+        </div>
+        <div>
+            @*using this to gather information then once done going toaction create() and posting*@
+            <label asp-for="Comments"></label>
+            <input asp-for="Comments"/>
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div>
+            <button type="submit">Update Appointment</button>
+        </div>
+    </form>
+    <a asp-action="AllAppointments" asp-controller="Home">Go back to all employees</a>
+</body>
+</html>

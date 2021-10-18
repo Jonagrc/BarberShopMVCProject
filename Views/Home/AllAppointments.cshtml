@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BarberShop.Models.Appointment>
+@{
+    ViewData["Title"] = "AllAppointments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/css/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+<h1>All Appointments</h1>
+
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Barber</th>
+                <th>Date and Time</th>
+                <th>Service</th>
+                <th>Comments</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+        @foreach (var appli in Model)
+        {
+            <tr>
+                <td>@appli.Barber</td>
+                <td>@appli.AppointmentDateTime</td>
+                <td>@appli.ServiceRequested</td>
+                <td>@appli.Comments</td>
+                <td style="padding-left:25px;"><a asp-action="Update" asp-controller="Home" asp-route-id="@appli.AppointmentId">Update Appointment</a></td>
+                <td style="padding-left:25px;"><a asp-action="Delete" asp-controller="Home" asp-route-id="@appli.AppointmentId">Delete Appointment</a></td>
+            </tr>
+        }
+    </table>
+    <div>
+        <a asp-action="CreateAppointment" asp-controller="Home">NEW APPOINTMENT</a>
+    </div>
+</body>

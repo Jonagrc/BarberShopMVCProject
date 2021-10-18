@@ -1,0 +1,46 @@
+﻿@model BarberShop.ViewModel.AppointmentViewModel;
+
+@{
+    ViewData["Title"] = "CreateAppointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CreateAppointment</h1>
+@*CREATE FORM JUST LIKE REGISTER*@
+<form method="post" asp-action="CreateAppointment" asp-controller="Home">
+    <div style="color:darkred">
+        @Html.ValidationSummary(false)
+    </div>
+    <label asp-for="Barber"></label>
+    <select asp-for="Barber"
+            asp-items="Html.GetEnumSelectList<BarberShop.Models.Barber>()">
+        <option value="">Please Select</option>
+    </select>
+    @*<div>
+        <label asp-for="AppointmentDateTime"></label>
+        <input asp-for="AppointmentDateTime" type="datetime" />
+        <span asp-validation-for="AppointmentDateTime"></span>
+    </div>*@
+<div>
+    @*using this to gather information then once done going toaction create() and posting*@
+    <label asp-for="AppointmentDateTime"></label>
+    <input asp-for="AppointmentDateTime" />
+    <span asp-validation-for="AppointmentDateTime"></span>
+</div>
+    <div>
+        <label asp-for="ServiceRequesting"></label>
+        <select asp-for="ServiceRequesting"
+                asp-items="Html.GetEnumSelectList<BarberShop.Models.Service>()">
+            <option value="">Please Select</option>
+        </select>
+    </div>
+    <div>
+        <label asp-for="Comments"></label>
+        <input asp-for="Comments" type="text" />
+        <span asp-validation-for="Comments"></span>
+    </div>
+    <div>
+        <button type="submit">Create Appointment</button>
+        @*//<a type="button" asp-action="Login" asp-controller="Account">Back to Login</a>*@
+    </div>
+</form>
